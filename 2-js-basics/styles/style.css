@@ -1,0 +1,88 @@
+* {
+    box-sizing: border-box;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    height: 255px;
+}
+
+.black-square, #black-square {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+}
+
+button {
+    position: relative;
+    height: 50px;
+    width: 150px;
+    top: 50px;
+    background-color: cadetblue;
+}
+
+.squares-block, .button-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+button:checked #blacksquare {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.yellow-square {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+}
+
+.red-square {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    visibility: hidden;
+}
+
+.green-square {
+    width: 50px;
+    height: 20px;
+    background-color: green;
+    visibility: hidden;
+}
+
+.coordinates-block {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 200px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.coordinates-subblock {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+}
+
+.three-blocks-wrapper {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.three-blocks-wrapper div {
+    position: relative;
+    width: 20%;
+    height: 100%;
+    border: 5px dashed rgb(90, 1, 103);
+}
