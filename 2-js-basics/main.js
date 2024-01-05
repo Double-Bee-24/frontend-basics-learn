@@ -136,7 +136,7 @@ page.addEventListener("mouseleave", updateDisplay, false);
 const browserLanguage = document.querySelector(".browser-language");
 browserLanguage.innerHTML = navigator.language || navigator.userLanguage;
 
-// Task 12
+// Task 12 -- commented because 
 
 // const longitude = document.querySelector(".user-longitude");
 // const latitude = document.querySelector(".user-latitude");
@@ -146,3 +146,131 @@ browserLanguage.innerHTML = navigator.language || navigator.userLanguage;
 // });
 
 // Task 13
+// Local storage
+const firstText = document.getElementById("first-text");
+firstText.addEventListener("input", updateLocalStorage);
+
+function updateLocalStorage() {
+    localStorage.setItem("firstText", firstText.innerHTML);
+}
+
+function setFromLocalStorage() {
+    const storedValue = localStorage.getItem("firstText");
+    firstText.innerHTML = storedValue;
+}
+
+// Session storage
+const secondText = document.getElementById("second-text");
+secondText.addEventListener("input", updateSessionStorage);
+
+function updateSessionStorage() {
+    sessionStorage.setItem("secondText",secondText.innerHTML);
+}
+
+function setFromSessionStorage () {
+    const storedValue = sessionStorage.getItem("secondText");
+    secondText.innerHTML = storedValue;
+}
+
+// Cookie
+const thirdText = document.getElementById("third-text");
+thirdText.addEventListener("input", updateCookie);
+
+function updateCookie(){
+    document.cookie = `thirdText=${encodeURIComponent(thirdText.innerHTML)}`;
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
+function setFromCookie () {
+    const storedValue = getCookie("thirdText");
+    thirdText.innerHTML = storedValue;
+}
+
+// Task 14
+const upButton = document.querySelector(".go-up-button");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+    if(document.documentElement.scrollTop + window.innerHeight > document.documentElement.scrollHeight - 200){
+        upButton.style.display = "block";
+    }else {
+        upButton.style.display = "none"; 
+    }
+}
+
+function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+}
+
+// Task 15 
+const externalBlock = document.querySelector(".external-block");
+const internalBlock = document.querySelector(".internal-block");
+externalBlock.addEventListener("click",showFirstMessage);
+internalBlock.addEventListener("click",showSecondMessage);
+
+function showFirstMessage() {
+    alert("First message");
+}
+
+function showSecondMessage() {
+    event.stopPropagation();
+    alert("Second message");
+}
+
+// Task 16
+
+const greySquare = document.querySelector(".grey-square");
+greySquare.addEventListener("click",hideGreySquare);
+
+function showSquare() {
+    greySquare.style.display = "block";
+    disableScroll();
+}
+
+function disableScroll() {
+    document.body.style.overflow = "hidden";
+}
+
+function hideGreySquare () {
+    document.body.style.overflow = "auto";
+    greySquare.style.display = "none";
+}
+
+// Task 17 
+
+const dropZone = document.getElementById("drop-zone");
+
+dropZone.addEventListener("dragenter", (event) => {
+    event.preventDefault();
+    dropZone.classList.add("file-upload-over");
+});
+
+dropZone.addEventListener("dragleave", (event) => {
+    event.preventDefault();
+    dropZone.classList.remove("file-upload-over");
+});
+
+dropZone.addEventListener("drop", (event) => {
+    event.preventDefault();
+});
+
+function fileSelected() {
+  dropZone.classList.add("file-upload-after-choose");
+}

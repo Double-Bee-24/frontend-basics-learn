@@ -6,7 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="styles/style.css">
 </head>
-<body>
+<body onload="setFromLocalStorage(); setFromSessionStorage(); setFromCookie()">
     <section>
         <h2>first task</h2>
         <div id="black-square"></div>
@@ -97,12 +97,43 @@
     <section>
         <h2>13th task</h2>
         <div class="three-blocks-wrapper">
-            <div></div>
-            <div></div>
-            <div></div>
+            <div><p id="first-text" contenteditable="true">panda is bear</p></div>
+            <div><p id="second-text" contenteditable="true">strawberry is nut</p></div>
+            <div><p id="third-text" contenteditable="true">palm is a grass</p></div>
         </div>
     </section>
 
+    <section>
+        <h2>15th task</h2>
+
+        <div class="external-block">
+            <div class="internal-block"></div>
+        </div>
+    </section>
+
+    <section>
+        <h2>16th task</h2>
+        <button onclick="showSquare()">Big square</button>
+    </section>
+
+    <section>
+        <h2>17th task</h2>
+        <form onsubmit="return false"><input type="submit" value="GO"></form>
+    </section>
+
+    <section>
+        <h2>18th task</h2>
+        <form>
+            <label id="drop-zone" for="file-upload" class="custom-file-upload">
+              Choose file
+            </label>
+            <input id="file-upload" type="file" onchange="fileSelected()">
+        </form>
+    </section>
+
+    <div class="grey-square"></div>
+
+    <button class="go-up-button" onclick="topFunction()">Up</button>
     <script src="main.js"></script>
 </body>
 </html>
