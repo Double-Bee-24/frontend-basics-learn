@@ -1,4 +1,4 @@
-// First three buttons
+// Task 1
 function hideSquare(){
    document.getElementById("black-square").style.display = "none"; 
 }
@@ -13,7 +13,7 @@ function makeHidden(){
     element.classList.add("hidden");
 }
 
-// Makes square visible/hidden
+// Task 2
 function changeVisibility(){
     // Make actions with higher square
     const element = document.getElementById("black-square");
@@ -24,7 +24,7 @@ function changeVisibility(){
         element.style.visibility = "hidden";
     }
 
-    // Make actions with 5 squares
+    // Task 3
     const elements = document.querySelectorAll(".black-square");
     for(let i = 0; i < elements.length; i++){
         elements[i].classList.add("hidden");
@@ -36,6 +36,7 @@ function changeVisibility(){
     }
 }
 
+// Task 4
 function hideByInput(){
    const selector = document.getElementById("text-box").value;
    const elements = document.querySelectorAll(selector);
@@ -44,7 +45,7 @@ function hideByInput(){
    }
 }
 
-// Actions with yellow square (task 5)
+// Task 5 Actions with yellow square
 const yellowSquare = document.querySelector(".yellow-square");
 yellowSquare.addEventListener("click", alertGreetingMessage);
 
@@ -58,7 +59,7 @@ function hideYellowSquare() {
     yellowSquare.classList.add("hidden");
 }
 
-// Actions with red square (task 6)
+// Task 6 Actions with red square
 const redSquareButton = document.querySelector(".red-square-button");
 const redSquare = document.querySelector(".red-square");
 redSquareButton.addEventListener("mouseover", showRedSquare);
@@ -72,7 +73,7 @@ function hideRedSquare(){
     redSquare.style.visibility = "hidden";
 }
 
-// Actions with input checkbox (task 7)
+// Task 7 Actions with input checkbox
 const greenSquare = document.querySelector(".green-square");
 const greenSquareInput = document.querySelector(".green-square-text-box");
 
@@ -136,7 +137,7 @@ page.addEventListener("mouseleave", updateDisplay, false);
 const browserLanguage = document.querySelector(".browser-language");
 browserLanguage.innerHTML = navigator.language || navigator.userLanguage;
 
-// Task 12 -- commented because 
+// Task 12 -- commented because of floating window with request of getting geolocation
 
 // const longitude = document.querySelector(".user-longitude");
 // const latitude = document.querySelector(".user-latitude");
@@ -151,12 +152,15 @@ const firstText = document.getElementById("first-text");
 firstText.addEventListener("input", updateLocalStorage);
 
 function updateLocalStorage() {
-    localStorage.setItem("firstText", firstText.innerHTML);
+    localStorage.setItem("firstText", firstText.innerText);
 }
 
 function setFromLocalStorage() {
+    if(localStorage.getItem("firstText") === null){
+        localStorage.setItem("firstText",firstText.innerText);
+    }
     const storedValue = localStorage.getItem("firstText");
-    firstText.innerHTML = storedValue;
+    firstText.innerText = storedValue;
 }
 
 // Session storage
@@ -164,12 +168,15 @@ const secondText = document.getElementById("second-text");
 secondText.addEventListener("input", updateSessionStorage);
 
 function updateSessionStorage() {
-    sessionStorage.setItem("secondText",secondText.innerHTML);
+    sessionStorage.setItem("secondText",secondText.innerText);
 }
 
 function setFromSessionStorage () {
+    if(sessionStorage.getItem("secondText") === null){
+        sessionStorage.setItem("secondText",secondText.innerText);
+    }
     const storedValue = sessionStorage.getItem("secondText");
-    secondText.innerHTML = storedValue;
+    secondText.innerText = storedValue;
 }
 
 // Cookie
@@ -235,7 +242,6 @@ function showSecondMessage() {
 }
 
 // Task 16
-
 const greySquare = document.querySelector(".grey-square");
 greySquare.addEventListener("click",hideGreySquare);
 
